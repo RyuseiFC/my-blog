@@ -1,9 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Image from "next/image";
-import Link from "next/link";
-import { ConstructionIcon, Trophy } from "lucide-react";
+
+import { Trophy } from "lucide-react";
 import PageTransition from "@/components/page-transition";
 import { U18A, J3, U15A, U15B, U13, U14, U18B } from "@/lib/soccer-data";
 

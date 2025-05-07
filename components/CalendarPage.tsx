@@ -21,6 +21,24 @@ import {
 } from "@/lib/utils";
 import { getBlogs } from "@/lib/client";
 
+// TimeFormat型を定義
+type TimeFormat = {
+  split: (separator: string) => string[];
+};
+
+// イベント型を定義
+type Event = {
+  id?: number;
+  title?: string;
+  startTime: TimeFormat;
+  endTime: TimeFormat;
+  color?: string;
+  startDate: string;
+  endDate?: string;
+  description?: string;
+  location?: string;
+};
+
 export default function CalendarPage() {
   const today = new Date();
   const {
@@ -63,7 +81,7 @@ export default function CalendarPage() {
 
   useEffect(() => {
     scrollDisplay(timeSlotRef);
-  }, []);
+  }, [timeSlotRef]);
 
   useEffect(() => {
     const daysInMonth = getDaysInMonth(currentMonth, currentYear);
@@ -75,10 +93,11 @@ export default function CalendarPage() {
     );
 
     setCalendarDays(newCalendarDays);
-  }, [currentMonth, currentYear]);
+  }, [currentMonth, currentYear, setCalendarDays]);
+
   useEffect(() => {
     setIsLoaded(true);
-  }, []);
+  }, [setIsLoaded]);
 
   const getEndOfWeek = (date: Date) => {
     const startOfWeek = getStartOfWeek(date);
@@ -134,10 +153,7 @@ export default function CalendarPage() {
       setCalendarYear((prev) => prev - 1);
     }
     setTrigger(false);
-    console.log(currentDate2);
-    console.log(endMonth);
-    console.log(startMonth);
-  }, [currentDate2]);
+  }, [currentDate2, currentWeekStart, trigger]);
 
   const handleDateSelection = (date: Date) => {
     setSelectedDay(date.getDate());
@@ -164,10 +180,10 @@ export default function CalendarPage() {
       setCurrentMonth(currentMonth - 1);
     }
   };
-  const [hoveredEvent, setHoveredEvent] = useState<number>();
+  const [hoveredEvent, setHoveredEvent] = useState<number | undefined>();
 
   const goToToday = async () => {
-    const { contents } = await getBlogs();
+    await getBlogs();
     scrollDisplay(timeSlotRef);
     setCurrentMonth(today.getMonth() + 1); // 1から始まる月に調整
     setCurrentYear(today.getFullYear()); // 今日の年を設定
@@ -213,7 +229,7 @@ export default function CalendarPage() {
     });
 
     setWeekDates(weekDays);
-  }, [currentWeekStart]); // currentWeekStartの変更に依存
+  }, [currentWeekStart, setCurrentDate, setCurrentDate2, setWeekDates]); // 依存配列を修正
 
   // 月の最初の曜日を取得
   const getFirstDayOffset = (monthIndex: number, year: number) => {
@@ -227,38 +243,15 @@ export default function CalendarPage() {
   // timeSlotsを12時間制に変換して格納
   const formattedTimeSlots = timeSlots.map(formatTime);
 
-  // Sample my calendars
-
-  const togglePlay = () => {
-    setIsPlaying(!isPlaying);
-    // Here you would typically also control the actual audio playback
-  };
-
   function isOverlappingWithDate(
-    eventA: { startDate?: any; startTime?: any; endTime?: any },
-    eventB: {
-      id?: number;
-      title?: string;
-      startTime?: any;
-      endTime?: any;
-      color?: string;
-      startDate: any;
-      endDate?: string;
-      description?: string;
-      location?: string;
-    }
+    eventA: { startDate: string; startTime: TimeFormat; endTime: TimeFormat },
+    eventB: Event
   ) {
     // 日付が異なる場合は絶対に重複しない
     if (eventA.startDate !== eventB.startDate) return false;
 
     // 時間を分（number）に変換
-    const toMinutes = (timeStr: {
-      split: (arg0: string) => {
-        (): any;
-        new (): any;
-        map: { (arg0: NumberConstructor): [any, any]; new (): any };
-      };
-    }) => {
+    const toMinutes = (timeStr: TimeFormat) => {
       const [hours, minutes] = timeStr.split(":").map(Number);
       return hours * 60 + minutes;
     };
@@ -464,20 +457,10 @@ export default function CalendarPage() {
                       ).padStart(2, "0")}-${String(i).padStart(2, "0")}`;
                       const dailyEvents = events.filter(
                         (event) => event.startDate === targetDate
-                      );
+                      ) as Event[];
 
                       // 重複判定ロジック
-                      const overlappingGroups: {
-                        id?: number;
-                        title?: string;
-                        startTime?: string;
-                        endTime?: string;
-                        color?: string;
-                        startDate?: string;
-                        endDate?: string;
-                        description?: string;
-                        location?: string;
-                      }[][] = [];
+                      const overlappingGroups: Event[][] = [];
                       dailyEvents.forEach((event) => {
                         let groupFound = false;
                         for (const group of overlappingGroups) {
@@ -501,7 +484,8 @@ export default function CalendarPage() {
                           );
                           const isHovered = hoveredEvent === event.id;
                           const isOtherHovered =
-                            hoveredEvent && hoveredEvent !== event.id;
+                            hoveredEvent !== undefined &&
+                            hoveredEvent !== event.id;
 
                           if (isOverlapping) {
                             if (isHovered) {
@@ -536,7 +520,11 @@ export default function CalendarPage() {
                               onClick={() =>
                                 handleEventClick(event as CalendarEvent)
                               }
-                              onMouseEnter={() => setHoveredEvent(event.id)}
+                              onMouseEnter={() => {
+                                if (event.id !== undefined) {
+                                  setHoveredEvent(event.id);
+                                }
+                              }}
                               onMouseLeave={() => setHoveredEvent(undefined)}
                             >
                               <div className="font-medium px-1 line-clamp-2">
@@ -561,7 +549,7 @@ export default function CalendarPage() {
           <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
             <div
               className={`${
-                selectedEvent.color.split("/")[0]
+                selectedEvent.color?.split("/")[0]
               } p-6 rounded-lg shadow-xl max-w-md w-full mx-4`}
             >
               <h3 className="text-2xl font-bold mb-4 text-white">

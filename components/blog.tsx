@@ -15,20 +15,6 @@ export default function BlogPage({ blogList }: { blogList: any[] }) {
     setIsLoaded(true);
   }, []);
 
-  // Sample blog posts data
-  const featuredPost = {
-    id: 1,
-    title:
-      "なぜLovy-techがスマートグラス事業？そこには革新的なDX体験の可能性があった",
-    excerpt:
-      "スマートグラスの最新技術と実用例について詳しく解説します。未来のテクノロジーがどのように私たちの生活を変えるのか、その可能性を探ります。",
-    image: "/placeholder.svg?height=600&width=1200",
-    category: "テクノロジー",
-    tags: ["スマートグラス", "DX", "イノベーション"],
-    date: "2025年4月1日",
-    author: "山田 太郎",
-  };
-
   const categories = [
     { name: "テクノロジー", count: 24 },
     { name: "AI", count: 18 },

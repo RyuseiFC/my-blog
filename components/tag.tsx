@@ -3,15 +3,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import {
-  Search,
-  Menu,
-  Settings,
-  TagIcon,
-  Hash,
-  Clock,
-  ChevronRight,
-} from "lucide-react";
+import { TagIcon, Hash, Clock, ChevronRight } from "lucide-react";
 import MainNav from "@/components/main-nav";
 import PageTransition from "@/components/page-transition";
 import Header from "@/components/Header";

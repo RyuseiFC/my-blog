@@ -6,15 +6,7 @@ import { useState } from "react";
 import { format, parseISO } from "date-fns";
 import Image from "next/image";
 import Link from "next/link";
-import {
-  Clock,
-  ChevronLeft,
-  Bookmark,
-  Heart,
-  MessageSquare,
-  FileText,
-  MessageCircle,
-} from "lucide-react";
+import { Clock, ChevronLeft, FileText } from "lucide-react";
 import MainNav from "@/components/main-nav";
 import PageTransition from "@/components/page-transition";
 import Header from "@/components/Header";
