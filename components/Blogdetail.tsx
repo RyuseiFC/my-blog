@@ -4,13 +4,14 @@ import { LineShareButton, LineIcon, TwitterShareButton } from "react-share";
 
 import { useState } from "react";
 import { format, parseISO } from "date-fns";
+// 使用していないインポートを削除
 import Image from "next/image";
-import Link from "next/link";
 import { Clock, ChevronLeft, FileText } from "lucide-react";
 import MainNav from "@/components/main-nav";
 import PageTransition from "@/components/page-transition";
 import Header from "@/components/Header";
 import { Blog } from "@/lib/client";
+import Link from "next/link";
 
 export default function BlogDetail({ blogPost }: { blogPost: Blog }) {
   const [activeTab, setActiveTab] = useState("article");
@@ -64,9 +65,9 @@ export default function BlogDetail({ blogPost }: { blogPost: Blog }) {
                 タグ
               </h3>
               <div className="flex flex-wrap gap-2 text-white">
-                {blogPost.tags.split(",").map((tag, index) => (
+                {blogPost.tags.split(",").map((tag, _index) => (
                   <span
-                    key={index}
+                    key={_index}
                     className="bg-white/10 px-3 py-1 rounded-full text-sm"
                   >
                     #{tag}
@@ -123,17 +124,7 @@ export default function BlogDetail({ blogPost }: { blogPost: Blog }) {
                       <FileText className="h-4 w-4" />
                       <span>記事</span>
                     </button>
-                    {/* <button
-                      onClick={() => setActiveTab("comments")}
-                      className={`px-4 py-3 flex items-center gap-2 border-b-2 transition-colors ${
-                        activeTab === "comments"
-                          ? "border-blue-500 text-white font-medium"
-                          : "border-transparent text-white/70 hover:text-white"
-                      }`}
-                    >
-                      <MessageCircle className="h-4 w-4" />
-                      <span>コメント </span>
-                    </button> */}
+                    {/* コメントタブ（コメントアウト中） */}
                   </div>
                 </div>
               </div>
@@ -148,120 +139,15 @@ export default function BlogDetail({ blogPost }: { blogPost: Blog }) {
                       }}
                     />
                   )}
-                  {/* {activeTab === "comments" && (
-                    <div className="py-4">
-                      <div className="mb-6">
-                        <h3 className="text-white text-lg font-medium mb-4">
-                          コメント
-                        </h3>
-                        <div className="space-y-4">
-                          <div className="bg-white/5 p-4 rounded-lg">
-                            <div className="flex items-start gap-3 mb-2">
-                              <div className="relative w-10 h-10 rounded-full overflow-hidden flex-shrink-0">
-                                <Image
-                                  src="/placeholder.svg?height=100&width=100"
-                                  alt="User"
-                                  fill
-                                  className="object-cover"
-                                />
-                              </div>
-                              <div>
-                                <div className="flex items-center gap-2">
-                                  <span className="text-white font-medium">
-                                    鈴木 一郎
-                                  </span>
-                                  <span className="text-white/50 text-xs">
-                                    2025年4月2日
-                                  </span>
-                                </div>
-                                <p className="text-white/80 mt-1">
-                                  とても興味深い記事でした。スマートグラスの医療分野での活用事例がもっと知りたいです。
-                                </p>
-                              </div>
-                            </div>
-                            <div className="ml-12 mt-2">
-                              <button className="text-blue-400 text-sm hover:text-blue-300 mr-4">
-                                返信
-                              </button>
-                              <button className="text-white/50 text-sm hover:text-white/70">
-                                いいね (3)
-                              </button>
-                            </div>
-                          </div>
-
-                          <div className="bg-white/5 p-4 rounded-lg">
-                            <div className="flex items-start gap-3 mb-2">
-                              <div className="relative w-10 h-10 rounded-full overflow-hidden flex-shrink-0">
-                                <Image
-                                  src="/placeholder.svg?height=100&width=100"
-                                  alt="User"
-                                  fill
-                                  className="object-cover"
-                                />
-                              </div>
-                              <div>
-                                <div className="flex items-center gap-2">
-                                  <span className="text-white font-medium">
-                                    田中 花子
-                                  </span>
-                                  <span className="text-white/50 text-xs">
-                                    2025年4月1日
-                                  </span>
-                                </div>
-                                <p className="text-white/80 mt-1">
-                                  プライバシーの懸念についてもっと詳しく知りたいです。特に公共の場での使用に関する法的な側面はどうなっていますか？
-                                </p>
-                              </div>
-                            </div>
-                            <div className="ml-12 mt-2">
-                              <button className="text-blue-400 text-sm hover:text-blue-300 mr-4">
-                                返信
-                              </button>
-                              <button className="text-white/50 text-sm hover:text-white/70">
-                                いいね (5)
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="mt-6">
-                        <h3 className="text-white text-lg font-medium mb-4">
-                          コメントを追加
-                        </h3>
-                        <textarea
-                          className="w-full bg-white/10 border border-white/20 rounded-lg p-3 text-white placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-blue-500 min-h-[120px]"
-                          placeholder="コメントを入力してください..."
-                        ></textarea>
-                        <button className="mt-3 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg transition-colors">
-                          投稿する
-                        </button>
-                      </div>
-                    </div>
-                  )} */}
+                  {/* コメントタブのコンテンツ（コメントアウト中） */}
                 </div>
 
                 {/* Article Actions */}
                 {activeTab === "article" && (
                   <div className="flex items-center justify-between mb-8">
-                    {/* <div className="flex items-center gap-4">
-                      <button className="flex items-center gap-2 text-white hover:text-blue-300 transition-colors">
-                        <Heart className="h-5 w-5" />
-                        <span>{0}</span>
-                      </button>
-                      <button
-                        onClick={() => setActiveTab("comments")}
-                        className="flex items-center gap-2 text-white hover:text-blue-300 transition-colors"
-                      >
-                        <MessageSquare className="h-5 w-5" />
-                        <span>{0}</span>
-                      </button>
-                    </div> */}
+                    {/* いいねボタン等（コメントアウト中） */}
                     <div className="flex items-center gap-4">
-                      {/* <button className="flex items-center gap-2 text-white hover:text-blue-300 transition-colors">
-                        <Bookmark className="h-5 w-5" />
-                        <span>保存</span>
-                      </button> */}
+                      {/* 保存ボタン（コメントアウト中） */}
                       <TwitterShareButton url={url}>
                         <Image
                           src="/logo.svg"

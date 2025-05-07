@@ -3,14 +3,13 @@
 import type React from "react";
 
 import { useState, useEffect } from "react";
-import { useRouter, usePathname } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { Calendar, BookOpen, Trophy } from "lucide-react";
 import Link from "next/link";
 
 export default function MainNav() {
   const [isLoaded, setIsLoaded] = useState(false);
   const pathname = usePathname();
-  const router = useRouter();
 
   useEffect(() => {
     setIsLoaded(true);
