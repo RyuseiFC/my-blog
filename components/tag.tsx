@@ -160,7 +160,7 @@ export default function TagsPage() {
               <div className="max-w-4xl mx-auto">
                 {selectedTag ? (
                   <div className="space-y-6">
-                    {taggedPosts.map((post, index) => (
+                    {taggedPosts.map((post) => (
                       <div
                         key={post.id}
                         className="bg-white/10 backdrop-blur-lg rounded-xl overflow-hidden shadow-lg border border-white/20 transition-all duration-300 hover:transform hover:scale-[1.01]"

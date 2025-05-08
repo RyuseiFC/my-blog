@@ -7,15 +7,21 @@ import { ChevronRight, Clock } from "lucide-react";
 import MainNav from "@/components/main-nav";
 import PageTransition from "@/components/page-transition";
 import Header from "@/components/Header";
+import { Blog } from "@/lib/client";
 
-export default function BlogPage({ blogList }: { blogList: any[] }) {
+// カテゴリーの型定義
+interface Category {
+  name: string;
+  count: number;
+}
+
+export default function BlogPage({ blogList }: { blogList: Blog[] }) {
   const [isLoaded, setIsLoaded] = useState(false);
-
   useEffect(() => {
     setIsLoaded(true);
   }, []);
 
-  const categories = [
+  const categories: Category[] = [
     { name: "テクノロジー", count: 24 },
     { name: "AI", count: 18 },
     { name: "ガジェット", count: 15 },
@@ -157,7 +163,7 @@ export default function BlogPage({ blogList }: { blogList: any[] }) {
                     最新の記事
                   </h2>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-                    {blogList.map((post, index) => (
+                    {blogList.map((post) => (
                       <div
                         key={post.id}
                         className="bg-white/10 backdrop-blur-lg rounded-xl overflow-hidden shadow-lg border border-white/20 transition-all duration-300 hover:transform hover:scale-[1.02]"
