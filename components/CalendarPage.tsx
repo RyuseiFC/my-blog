@@ -47,8 +47,6 @@ export default function CalendarPage() {
     setCurrentWeekEnd,
     isLoaded,
     setIsLoaded,
-    isPlaying,
-    setIsPlaying,
     currentMonth,
     setCalendarDays,
     setWeekDates,

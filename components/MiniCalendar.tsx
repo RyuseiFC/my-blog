@@ -75,7 +75,7 @@ const MiniCalendar: React.FC<MiniCalendarProps> = ({
               | boolean
               | React.ReactElement<
                   unknown,
-                  string | React.JSXElementConstructor<any>
+                  string | React.JSXElementConstructor<unknown>
                 >
               | Iterable<React.ReactNode>
               | Promise<
@@ -86,7 +86,7 @@ const MiniCalendar: React.FC<MiniCalendarProps> = ({
                   | React.ReactPortal
                   | React.ReactElement<
                       unknown,
-                      string | React.JSXElementConstructor<any>
+                      string | React.JSXElementConstructor<unknown>
                     >
                   | Iterable<React.ReactNode>
                   | null
@@ -107,7 +107,9 @@ const MiniCalendar: React.FC<MiniCalendarProps> = ({
               <div
                 key={i}
                 onClick={() => {
-                  day && setSelectedDay(Number(day));
+                  if (day) {
+                    setSelectedDay(Number(day));
+                  }
                   setSelectedMonth(currentMonth);
                   setSelectedYear(currentYear);
                   onSelectDate(
