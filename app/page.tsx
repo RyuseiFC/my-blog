@@ -1,4 +1,4 @@
-import BlogPage from "@/components/blog";
+import BlogPage from "@/components/blogPage";
 import { getBlogs } from "@/lib/client";
 
 export default async function Home() {

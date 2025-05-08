@@ -26,7 +26,7 @@ export default function BlogDetail({ blogPost }: { blogPost: Blog }) {
       <PageTransition>
         <main className="relative h-screen w-full pt-36 flex">
           <div
-            className={`w-64 h-full bg-white/10 backdrop-blur-lg p-4 shadow-xl border-r border-white/20 rounded-tr-3xl  flex flex-col`}
+            className={`hidden md:block w-64 h-full bg-white/10 backdrop-blur-lg p-4 shadow-xl border-r border-white/20 rounded-tr-3xl flex-col`}
           >
             <Link
               href="/"
@@ -85,6 +85,15 @@ export default function BlogDetail({ blogPost }: { blogPost: Blog }) {
           >
             {/* Scrollable Content */}
             <div className="flex-1 overflow-auto pt-6">
+              <Link
+                href="/"
+                className="md:hidden group flex items-center gap-2 text-white mb-6 transition-colors px-4 py-2 rounded hover:bg-white/10"
+              >
+                <ChevronLeft className="h-4 w-4 group-hover:text-blue-300 transition-colors" />
+                <span className="group-hover:text-blue-300 transition-colors">
+                  ブログ一覧に戻る
+                </span>
+              </Link>
               <div className="border-b border-white/20 bg-white/5 backdrop-blur-sm py-3">
                 <div className="max-w-2xl mx-auto px-6">
                   <div className="flex flex-col gap-4">
@@ -124,7 +133,6 @@ export default function BlogDetail({ blogPost }: { blogPost: Blog }) {
                       <FileText className="h-4 w-4" />
                       <span>記事</span>
                     </button>
-                    {/* コメントタブ（コメントアウト中） */}
                   </div>
                 </div>
               </div>

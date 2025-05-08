@@ -272,7 +272,7 @@ export default function CalendarPage() {
       <main className="relative h-screen w-full pt-40 flex">
         {/* Sidebar */}
         <div
-          className={`w-64 h-full bg-white/10 backdrop-blur-lg p-4 shadow-xl border-r border-white/20 rounded-tr-3xl opacity-0 ${
+          className={`hidden xl:block w-64 h-full bg-white/10 backdrop-blur-lg p-4 shadow-xl border-r border-white/20 rounded-tr-3xl opacity-0 ${
             isLoaded ? "animate-fade-in" : ""
           } flex flex-col justify-between`}
           style={{ animationDelay: "0.4s" }}
@@ -351,7 +351,7 @@ export default function CalendarPage() {
                   <ChevronRight className="h-5 w-5" />
                 </button>
               </div>
-              <h2 className="text-xl font-semibold text-white">
+              <h2 className="text-sm md:text-xl font-semibold text-white">
                 {calendarYear}年
                 {currentDate2 !== null
                   ? `${currentDate}月 - ${currentDate2}月`
@@ -359,7 +359,7 @@ export default function CalendarPage() {
               </h2>
             </div>
 
-            <div className="flex items-center gap-2 rounded-md p-1">
+            {/* <div className="flex items-center gap-2 rounded-md p-1">
               <button
                 onClick={() => setCurrentView("day")}
                 className={`px-3 py-1 rounded ${
@@ -376,7 +376,7 @@ export default function CalendarPage() {
               >
                 Week
               </button>
-            </div>
+            </div> */}
           </div>
 
           <div className="px-4 grid grid-cols-8 border-b border-white/20 week-header sticky bg-white/20 backdrop-blur-lg rounded-xl border shadow-xl h-90">
@@ -507,7 +507,7 @@ export default function CalendarPage() {
                               key={`${groupIndex}-${eventIndex}`}
                               className={`absolute ${
                                 event.color
-                              } rounded-md p-1 border text-white text-xs shadow-md cursor-pointer transition-all duration-200 ${
+                              } rounded-md p-1 border w-[40px] text-white text-xs shadow-md cursor-pointer transition-all duration-200 ${
                                 isHovered
                                   ? "translate-y-[-2px] shadow-lg border-2 border-white scale-105"
                                   : isOtherHovered
@@ -525,10 +525,12 @@ export default function CalendarPage() {
                               }}
                               onMouseLeave={() => setHoveredEvent(undefined)}
                             >
-                              <div className="font-medium px-1 line-clamp-2">
-                                {event.title}
+                              <div className="hidden md:block font-medium px-1">
+                                {event.title && event.title.length > 8
+                                  ? `${event.title.slice(0, 8)}…`
+                                  : event.title}
                               </div>
-                              <div className="opacity-80 text-[10px] mt-0.5 px-1 truncate">
+                              <div className="hidden md:block opacity-80 text-[10px] mt-0.5 px-1 truncate">
                                 {`${event.startTime} - ${event.endTime}`}
                               </div>
                             </div>

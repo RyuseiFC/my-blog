@@ -2,9 +2,36 @@
 
 import { useState, useEffect } from "react";
 
-import { Trophy } from "lucide-react";
+import {
+  ChevronLeft,
+  Trophy,
+  Check,
+  ChevronsUpDown,
+  ChevronDown,
+} from "lucide-react";
 import PageTransition from "@/components/page-transition";
 import { U18A, J3, U15A, U15B, U13, U14, U18B } from "@/lib/soccer-data";
+import Link from "next/link";
+import { StylishDropdown } from "./stylish-dropdown";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "./ui/dropdown-menu";
+
+const categories = [
+  { value: "clothing", label: "衣類" },
+  { value: "electronics", label: "電子機器" },
+  { value: "books", label: "書籍" },
+  { value: "home", label: "ホーム用品" },
+  { value: "beauty", label: "美容製品" },
+  { value: "sports", label: "スポーツ用品" },
+  { value: "toys", label: "おもちゃ" },
+  { value: "food", label: "食品" },
+];
 
 export default function RankingsPage() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -71,7 +98,7 @@ export default function RankingsPage() {
         <main className="relative h-screen w-full pt-40 flex">
           {/* Sidebar */}
           <div
-            className={`w-64 h-full bg-white/10 backdrop-blur-lg p-4 shadow-xl border-r border-white/20 rounded-tr-3xl opacity-0 ${
+            className={`hidden md:block w-64 h-full bg-white/10 backdrop-blur-lg p-4 shadow-xl border-r border-white/20 rounded-tr-3xl opacity-0 ${
               isLoaded ? "animate-fade-in" : ""
             } flex flex-col`}
             style={{ animationDelay: "0.4s" }}
@@ -113,6 +140,15 @@ export default function RankingsPage() {
             } overflow-hidden`}
             style={{ animationDelay: "0.6s" }}
           >
+            {/* <StylishDropdown
+              options={leagueOptions.map((league) => ({
+                value: league.id,
+                label: league.name,
+              }))}
+              placeholder="リーグを選択"
+              onChange={(value) => setActiveLeague(value)}
+            /> */}
+
             {/* Content Header */}
             <div className="flex items-center justify-between p-6 border-b border-white/20">
               <div className="flex items-center gap-3">
@@ -130,8 +166,36 @@ export default function RankingsPage() {
                   公式HPはこちら(外部のページへ遷移します)
                 </a>
               </div>
+              <div className="md:hidden flex items-center gap-4">
+                <div className="relative">
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                      <button className="flex items-center gap-2 bg-white/10 hover:bg-white/20 transition-colors rounded-lg px-4 py-2 text-white">
+                        <span>リーグを選択</span>
+                        <ChevronDown className="h-4 w-4" />
+                      </button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent className="w-56 bg-white/10 backdrop-blur-lg border-white/20">
+                      <DropdownMenuLabel className="text-white">
+                        リーグ選択
+                      </DropdownMenuLabel>
+                      <DropdownMenuSeparator className="bg-white/20" />
+                      {leagueOptions.map((league) => (
+                        <DropdownMenuItem
+                          key={league.id}
+                          className={`text-white hover:bg-white/20 cursor-pointer ${
+                            activeLeague === league.id ? "bg-blue-500/50" : ""
+                          }`}
+                          onClick={() => setActiveLeague(league.id)}
+                        >
+                          {league.name}
+                        </DropdownMenuItem>
+                      ))}
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                </div>
+              </div>
             </div>
-
             {/* Scrollable Content */}
             <div className="flex-1 overflow-auto p-6">
               <div className="max-w-5xl mx-auto">
