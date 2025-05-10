@@ -161,7 +161,7 @@ export default function RankingsPage() {
                   href={leagueOptions.find((l) => l.id === activeLeague)?.hp}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-sm text-white bg-white/20 rounded-lg hover:text-blue-300 transition-colors"
+                  className="flex items-center gap-2 text-xs text-white bg-white/20 rounded-lg hover:text-blue-300 transition-colors"
                 >
                   公式HPはこちら(外部のページへ遷移します)
                 </a>

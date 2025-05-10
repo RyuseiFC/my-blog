@@ -507,7 +507,7 @@ export default function CalendarPage() {
                               key={`${groupIndex}-${eventIndex}`}
                               className={`absolute ${
                                 event.color
-                              } rounded-md p-1 border w-[40px] text-white text-xs shadow-md cursor-pointer transition-all duration-200 ${
+                              } rounded-md p-1 border w-[50px] text-white text-xs shadow-md cursor-pointer transition-all duration-200 ${
                                 isHovered
                                   ? "translate-y-[-2px] shadow-lg border-2 border-white scale-105"
                                   : isOtherHovered
