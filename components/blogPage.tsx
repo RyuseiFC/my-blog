@@ -8,10 +8,6 @@ import PageTransition from "@/components/page-transition";
 import { Blog } from "@/lib/client";
 
 // カテゴリーの型定義
-interface Category {
-  name: string;
-  count: number;
-}
 
 export default function BlogPage({ blogList }: { blogList: Blog[] }) {
   const [isLoaded, setIsLoaded] = useState(false);
