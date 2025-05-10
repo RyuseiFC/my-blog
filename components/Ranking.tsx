@@ -2,17 +2,10 @@
 
 import { useState, useEffect } from "react";
 
-import {
-  ChevronLeft,
-  Trophy,
-  Check,
-  ChevronsUpDown,
-  ChevronDown,
-} from "lucide-react";
+import { Trophy, ChevronDown } from "lucide-react";
 import PageTransition from "@/components/page-transition";
 import { U18A, J3, U15A, U15B, U13, U14, U18B } from "@/lib/soccer-data";
-import Link from "next/link";
-import { StylishDropdown } from "./stylish-dropdown";
+
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -21,17 +14,6 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
-
-const categories = [
-  { value: "clothing", label: "衣類" },
-  { value: "electronics", label: "電子機器" },
-  { value: "books", label: "書籍" },
-  { value: "home", label: "ホーム用品" },
-  { value: "beauty", label: "美容製品" },
-  { value: "sports", label: "スポーツ用品" },
-  { value: "toys", label: "おもちゃ" },
-  { value: "food", label: "食品" },
-];
 
 export default function RankingsPage() {
   const [isLoaded, setIsLoaded] = useState(false);

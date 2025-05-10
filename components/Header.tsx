@@ -1,5 +1,4 @@
 "use client";
-import { Menu } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 import MainNav from "@/components/main-nav";

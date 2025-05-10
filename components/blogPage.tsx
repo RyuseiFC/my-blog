@@ -19,14 +19,6 @@ export default function BlogPage({ blogList }: { blogList: Blog[] }) {
     setIsLoaded(true);
   }, []);
 
-  const categories: Category[] = [
-    { name: "テクノロジー", count: 24 },
-    { name: "AI", count: 18 },
-    { name: "ガジェット", count: 15 },
-    { name: "ヘルスケア", count: 12 },
-    { name: "VR/AR", count: 10 },
-  ];
-
   return (
     <div className="relative min-h-screen w-full overflow-hidden">
       {/* Main Content */}
