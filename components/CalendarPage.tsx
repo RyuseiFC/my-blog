@@ -60,8 +60,6 @@ export default function CalendarPage() {
     selectedYear,
     setSelectedYear,
     calendarDays,
-    currentView,
-    setCurrentView,
     currentDate,
     setCurrentDate,
     currentDate2,
