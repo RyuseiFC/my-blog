@@ -293,7 +293,6 @@ export default function CalendarPage() {
               onSelectDate={handleDateSelection} // 追加
               setCalendarYear={setCalendarYear}
             />
-
             {/* My Calendars */}
           </div>
 
