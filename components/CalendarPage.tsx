@@ -276,11 +276,6 @@ export default function CalendarPage() {
           style={{ animationDelay: "0.4s" }}
         >
           <div>
-            {/* <button className="mb-6 flex items-center justify-center gap-2 rounded-full bg-blue-500 px-4 py-3 text-white w-full">
-              <Plus className="h-5 w-5" />
-              <span>Create</span>
-            </button> */}
-
             {/* Mini Calendar */}
             <MiniCalendar
               currentMonth={currentMonth}
@@ -300,17 +295,6 @@ export default function CalendarPage() {
             />
 
             {/* My Calendars */}
-            <div>
-              <h3 className="text-white font-medium mb-3">My calendars</h3>
-              <div className="space-y-2">
-                {myCalendars.map((cal, i) => (
-                  <div key={i} className="flex items-center gap-3">
-                    <div className={`w-3 h-3 rounded-sm ${cal.color}`}></div>
-                    <span className="text-white text-sm">{cal.name}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
           </div>
 
           {/* New position for the big plus button */}
@@ -349,32 +333,25 @@ export default function CalendarPage() {
                   <ChevronRight className="h-5 w-5" />
                 </button>
               </div>
+            </div>
+
+            {/* 年月と凡例を左右に分ける部分 */}
+            <div className="flex justify-between items-center w-full px-4">
               <h2 className="text-sm md:text-xl font-semibold text-white">
                 {calendarYear}年
                 {currentDate2 !== null
                   ? `${currentDate}月 - ${currentDate2}月`
                   : `${currentDate}月`}
               </h2>
+              <div className="space-y-2 bg-white/10 backdrop-blur-lg p-4 shadow-xl border-r border-white/20">
+                {myCalendars.map((cal, i) => (
+                  <div key={i} className="flex items-center gap-3">
+                    <div className={`w-3 h-3 rounded-sm ${cal.color}`}></div>
+                    <span className="text-white text-sm">{cal.name}</span>
+                  </div>
+                ))}
+              </div>
             </div>
-
-            {/* <div className="flex items-center gap-2 rounded-md p-1">
-              <button
-                onClick={() => setCurrentView("day")}
-                className={`px-3 py-1 rounded ${
-                  currentView === "day" ? "bg-white/20" : ""
-                } text-white text-sm`}
-              >
-                Day
-              </button>
-              <button
-                onClick={() => setCurrentView("week")}
-                className={`px-3 py-1 rounded ${
-                  currentView === "week" ? "bg-white/20" : ""
-                } text-white text-sm`}
-              >
-                Week
-              </button>
-            </div> */}
           </div>
 
           <div className="px-4 grid grid-cols-8 border-b border-white/20 week-header sticky bg-white/20 backdrop-blur-lg rounded-xl border shadow-xl h-90">
