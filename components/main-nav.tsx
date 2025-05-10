@@ -47,7 +47,7 @@ export default function MainNav() {
       }`}
       style={{ animationDelay: "0.3s" }}
     >
-      <div className="bg-white/10 backdrop-blur-lg rounded-full border border-white/20 p-1 shadow-lg">
+      <div className="bg-white/40 backdrop-blur-lg rounded-full border border-white/20 p-1 shadow-lg">
         {navItems.map((item) => {
           const Icon = item.icon;
           const active = isActive(item.path);
@@ -62,7 +62,7 @@ export default function MainNav() {
               }`}
             >
               <Icon className="h-4 w-4" />
-              <span className="font-medium">{item.name}</span>
+              <span className="hidden md:block font-medium">{item.name}</span>
             </Link>
           );
         })}

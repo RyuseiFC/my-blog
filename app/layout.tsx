@@ -21,15 +21,19 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Image
-          src="/IMG_2793.jpg"
-          alt="Sample Image"
-          fill
-          priority
-          className="object-cover brightness-50"
-        />
-        <Header />
-        {children}
+        <div className="relative h-screen w-full">
+          <Image
+            src="/IMG_2793.jpg"
+            alt="Yamaga"
+            fill
+            priority
+            unoptimized
+            className="object-cover brightness-50"
+          />
+
+          <Header />
+          {children}
+        </div>
       </body>
     </html>
   );
