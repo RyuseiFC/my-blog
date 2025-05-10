@@ -7,7 +7,7 @@ export const metadata = {
     description: "",
     images: [
       {
-        url: "https://my-blog-liart-chi.vercel.app/IMG_1379_Original.jpg", // 🌟 静的画像の指定
+        url: "https://my-blog-liart-chi.vercel.app/IMG_8285.JPG", // 🌟 静的画像の指定
         width: 1200,
         height: 630,
       },

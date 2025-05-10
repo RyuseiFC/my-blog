@@ -337,12 +337,14 @@ export default function CalendarPage() {
             {/* 年月と凡例を左右に分ける部分 */}
             <div className="flex justify-between items-center w-full px-4">
               <h2 className="text-sm md:text-xl font-semibold text-white">
-                {calendarYear}年
-                {currentDate2 !== null
-                  ? `${currentDate}月 - ${currentDate2}月`
-                  : `${currentDate}月`}
+                <div>{calendarYear}年</div>
+                <div>
+                  {currentDate2 !== null
+                    ? `${currentDate}月 - ${currentDate2}月`
+                    : `${currentDate}月`}
+                </div>
               </h2>
-              <div className="space-y-2 bg-white/10 backdrop-blur-lg p-4 shadow-xl border-r border-white/20">
+              <div className="space-y-2 bg-white/10 text-xs backdrop-blur-lg p-4 shadow-xl border-r border-white/20">
                 {myCalendars.map((cal, i) => (
                   <div key={i} className="flex items-center gap-3">
                     <div className={`w-3 h-3 rounded-sm ${cal.color}`}></div>

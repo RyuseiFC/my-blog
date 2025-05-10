@@ -132,6 +132,14 @@ export default function RankingsPage() {
             /> */}
 
             {/* Content Header */}
+            <div className="flex items-center flex-col gap-2 mb-6">
+              <h3 className="text-sm md:hidden font-bold text-white">
+                最新の順位は各リーグの公式HPを参照ください。
+              </h3>
+              <h6 className="text-xs text-white/50">
+                (このページは気まぐれで手動更新です)
+              </h6>
+            </div>
             <div className="flex items-center justify-between p-6 border-b border-white/20">
               <div className="flex items-center gap-3">
                 <Trophy className="h-6 w-6 text-blue-400" />
@@ -143,17 +151,17 @@ export default function RankingsPage() {
                   href={leagueOptions.find((l) => l.id === activeLeague)?.hp}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-xs text-white bg-white/20 rounded-lg hover:text-blue-300 transition-colors"
+                  className="flex items-center underline gap-2 text-xs text-white bg-white/20 rounded-lg hover:text-blue-300 transition-colors"
                 >
-                  公式HPはこちら(外部のページへ遷移します)
+                  公式HP
                 </a>
               </div>
               <div className="md:hidden flex items-center gap-4">
                 <div className="relative">
                   <DropdownMenu>
                     <DropdownMenuTrigger asChild>
-                      <button className="flex items-center gap-2 bg-white/10 hover:bg-white/20 transition-colors rounded-lg px-4 py-2 text-white">
-                        <span>リーグを選択</span>
+                      <button className="flex items-center gap-2 text-sm bg-white/10 hover:bg-white/20 transition-colors rounded-lg px-4 py-2 text-white">
+                        <span>リーグ選択</span>
                         <ChevronDown className="h-4 w-4" />
                       </button>
                     </DropdownMenuTrigger>
