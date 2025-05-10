@@ -483,6 +483,9 @@ export default function CalendarPage() {
                             hoveredEvent !== undefined &&
                             hoveredEvent !== event.id;
 
+                          if (!isOverlapping) {
+                            eventStyle.width = "100%";
+                          }
                           if (isOverlapping) {
                             if (isHovered) {
                               // hover状態の場合は全体の幅で表示
