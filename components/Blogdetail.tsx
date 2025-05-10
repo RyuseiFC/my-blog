@@ -7,22 +7,18 @@ import { format, parseISO } from "date-fns";
 // 使用していないインポートを削除
 import Image from "next/image";
 import { Clock, ChevronLeft, FileText } from "lucide-react";
-import MainNav from "@/components/main-nav";
 import PageTransition from "@/components/page-transition";
-import Header from "@/components/Header";
 import { Blog } from "@/lib/client";
 import Link from "next/link";
 
 export default function BlogDetail({ blogPost }: { blogPost: Blog }) {
   const [activeTab, setActiveTab] = useState("article");
-  const url = "https://www.yamaga-fc.com";
+  const url = "https://my-blog-liart-chi.vercel.app";
   const isLoaded = true;
   const formatted = format(parseISO(blogPost.createdAt), "yyyy年M月d日");
 
   return (
     <div className="relative min-h-screen w-full overflow-hidden">
-      <Header />
-      <MainNav />
       <PageTransition>
         <main className="relative h-screen w-full pt-36 flex">
           <div

@@ -4,10 +4,10 @@ import { getBlogs } from "@/lib/client";
 export const metadata = {
   openGraph: {
     title: "雷鳥ブログ",
-    description: "",
+    description: "観戦の日記とか書いてます",
     images: [
       {
-        url: "/IMG_2793.jpg", // 🌟 静的画像の指定
+        url: "https://my-blog-liart-chi.vercel.app/IMG_2793.jpg", // 🌟 静的画像の指定
         width: 1200,
         height: 630,
       },
