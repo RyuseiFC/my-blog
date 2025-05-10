@@ -3,9 +3,8 @@ import { getBlogs } from "@/lib/client";
 
 export const metadata = {
   openGraph: {
-    title: "ペンギンブログ",
-    description:
-      "ペンギンブログは、世界中のペンギンの生態、特徴、驚くべき行動を紹介するブログです。ペンギン好きにはたまらない情報が満載！",
+    title: "雷鳥ブログ",
+    description: "",
     images: [
       {
         url: "/IMG_2793.jpg", // 🌟 静的画像の指定
