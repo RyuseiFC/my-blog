@@ -5,8 +5,9 @@ import { getDetail } from "@/lib/client";
 export default async function BlogPostPage({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
-  const blogPost = await getDetail(params.id);
+  const { id } = await params;
+  const blogPost = await getDetail(id);
   return <BlogDetail blogPost={blogPost} />;
 }
