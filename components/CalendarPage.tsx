@@ -531,7 +531,7 @@ export default function CalendarPage() {
                 selectedEvent.color?.split("/")[0]
               } p-6 rounded-lg shadow-xl max-w-md w-full mx-4`}
             >
-              <h3 className="text-2xl font-bold mb-4 text-white">
+              <h3 className="text-lg font-bold mb-4 text-white">
                 {selectedEvent.title}
               </h3>
               <div className="space-y-3 text-white">

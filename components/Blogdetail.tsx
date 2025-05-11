@@ -115,7 +115,7 @@ export default function BlogDetail({ blogPost }: { blogPost: Blog }) {
               </div>
 
               {/* Tabs Navigation */}
-              <div className="border-b border-white/20 bg-white/5">
+              <div className="border-b border-white/20 bg-white/10">
                 <div className="max-w-2xl mx-auto px-6">
                   <div className="flex">
                     <button
@@ -132,9 +132,9 @@ export default function BlogDetail({ blogPost }: { blogPost: Blog }) {
                   </div>
                 </div>
               </div>
-              <div className="max-w-2xl mx-auto px-6 py-4">
+              <div className=" max-w-2xl mx-auto px-6 py-4">
                 {/* Tab Content */}
-                <div className="bg-white/10 backdrop-blur-lg rounded-xl p-5 shadow-lg border border-white/20 mb-6">
+                <div className="bg-black/50 backdrop-blur-lg p-4 shadow-xl rounded-xl border border-white/20 mb-6">
                   {activeTab === "article" && (
                     <div
                       className="prose prose-lg prose-invert max-w-none"

@@ -2,6 +2,7 @@
 import Link from "next/link";
 import React from "react";
 import MainNav from "@/components/main-nav";
+import { HomeIcon } from "lucide-react";
 
 const Header = () => {
   const isLoaded = true;
@@ -24,7 +25,7 @@ const Header = () => {
       <div className="flex items-center gap-4">
         <div className="relative"></div>
         <Link className="text-white " href="/">
-          ホームへ
+          <HomeIcon />
         </Link>
       </div>
       <MainNav />
