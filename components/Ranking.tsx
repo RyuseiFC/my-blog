@@ -136,7 +136,7 @@ export default function RankingsPage() {
               <h3 className="text-sm md:hidden font-bold text-white">
                 最新の順位は各リーグの公式HPを参照ください。
               </h3>
-              <h6 className="text-xs text-white/50">
+              <h6 className="text-sm md:hidden text-white/50">
                 (このページは気まぐれで手動更新です)
               </h6>
             </div>
