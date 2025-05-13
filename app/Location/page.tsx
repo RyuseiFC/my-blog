@@ -46,11 +46,11 @@ interface Stadium {
 export default function VenuesPage() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [activeLeague, setActiveLeague] = useState("all");
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchQuery] = useState("");
   const [selectedStadium, setSelectedStadium] = useState<Stadium | null>(null);
   const [mapInitialized, setMapInitialized] = useState(false);
-  const mapRef = useRef<any>(null);
-  const markersRef = useRef<any[]>([]);
+  const mapRef = useRef(null);
+  const markersRef = useRef([]);
   const mapContainerRef = useRef<HTMLDivElement>(null);
 
   // 地域選択のオプション
