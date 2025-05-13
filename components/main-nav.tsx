@@ -31,11 +31,11 @@ export default function MainNav() {
       path: "/ranking",
       icon: Trophy,
     },
-    {
-      name: "試合会場",
-      path: "/Location",
-      icon: Locate,
-    },
+    // {
+    //   name: "試合会場",
+    //   path: "/Location",
+    //   icon: Locate,
+    // },
   ];
 
   const isActive = (path: string) => {
