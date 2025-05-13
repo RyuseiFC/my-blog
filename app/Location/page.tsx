@@ -43,6 +43,12 @@ interface Stadium {
   accessInfo?: string;
 }
 
+declare global {
+  interface Window {
+    L: typeof import("leaflet");
+  }
+}
+
 export default function VenuesPage() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [activeLeague, setActiveLeague] = useState("all");
