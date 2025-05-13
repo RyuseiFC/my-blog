@@ -4,7 +4,7 @@ import type React from "react";
 
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
-import { Calendar, BookOpen, Trophy } from "lucide-react";
+import { Calendar, BookOpen, Trophy, Locate } from "lucide-react";
 import Link from "next/link";
 
 export default function MainNav() {
@@ -31,6 +31,11 @@ export default function MainNav() {
       path: "/ranking",
       icon: Trophy,
     },
+    // {
+    //   name: "試合会場",
+    //   path: "/Location",
+    //   icon: Locate,
+    // },
   ];
 
   const isActive = (path: string) => {

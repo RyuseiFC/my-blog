@@ -7,22 +7,18 @@ import { format, parseISO } from "date-fns";
 // 使用していないインポートを削除
 import Image from "next/image";
 import { Clock, ChevronLeft, FileText } from "lucide-react";
-import MainNav from "@/components/main-nav";
 import PageTransition from "@/components/page-transition";
-import Header from "@/components/Header";
 import { Blog } from "@/lib/client";
 import Link from "next/link";
 
 export default function BlogDetail({ blogPost }: { blogPost: Blog }) {
   const [activeTab, setActiveTab] = useState("article");
-  const url = "https://www.yamaga-fc.com";
+  const url = "https://my-blog-liart-chi.vercel.app";
   const isLoaded = true;
   const formatted = format(parseISO(blogPost.createdAt), "yyyy年M月d日");
 
   return (
     <div className="relative min-h-screen w-full overflow-hidden">
-      <Header />
-      <MainNav />
       <PageTransition>
         <main className="relative h-screen w-full pt-36 flex">
           <div
@@ -119,7 +115,7 @@ export default function BlogDetail({ blogPost }: { blogPost: Blog }) {
               </div>
 
               {/* Tabs Navigation */}
-              <div className="border-b border-white/20 bg-white/5">
+              <div className="border-b border-white/20 bg-white/10">
                 <div className="max-w-2xl mx-auto px-6">
                   <div className="flex">
                     <button
@@ -136,9 +132,9 @@ export default function BlogDetail({ blogPost }: { blogPost: Blog }) {
                   </div>
                 </div>
               </div>
-              <div className="max-w-2xl mx-auto px-6 py-4">
+              <div className=" max-w-2xl mx-auto px-6 py-4">
                 {/* Tab Content */}
-                <div className="bg-white/10 backdrop-blur-lg rounded-xl p-5 shadow-lg border border-white/20 mb-6">
+                <div className="bg-black/50 backdrop-blur-lg p-4 shadow-xl rounded-xl border border-white/20 mb-6">
                   {activeTab === "article" && (
                     <div
                       className="prose prose-lg prose-invert max-w-none"

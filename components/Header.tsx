@@ -2,6 +2,7 @@
 import Link from "next/link";
 import React from "react";
 import MainNav from "@/components/main-nav";
+import { HomeIcon } from "lucide-react";
 
 const Header = () => {
   const isLoaded = true;
@@ -14,7 +15,7 @@ const Header = () => {
     >
       <div className="flex items-center gap-4">
         <span className="text-2xl font-semibold text-white drop-shadow-lg">
-          山雅の追っかけ
+          雷鳥ブログ
         </span>
         <span className="hidden md:block text-sm font-semibold text-white drop-shadow-lg">
           個人開発のアウトプットとして運営しているサイト（非公式）
@@ -24,7 +25,7 @@ const Header = () => {
       <div className="flex items-center gap-4">
         <div className="relative"></div>
         <Link className="text-white " href="/">
-          ホームへ
+          <HomeIcon />
         </Link>
       </div>
       <MainNav />

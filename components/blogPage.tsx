@@ -6,6 +6,7 @@ import Link from "next/link";
 import { ChevronRight, Clock } from "lucide-react";
 import PageTransition from "@/components/page-transition";
 import { Blog } from "@/lib/client";
+import { format, parseISO } from "date-fns";
 
 // カテゴリーの型定義
 
@@ -14,7 +15,6 @@ export default function BlogPage({ blogList }: { blogList: Blog[] }) {
   useEffect(() => {
     setIsLoaded(true);
   }, []);
-
   return (
     <div className="relative min-h-screen w-full overflow-hidden">
       {/* Main Content */}
@@ -74,7 +74,8 @@ export default function BlogPage({ blogList }: { blogList: Blog[] }) {
                         <div className="p-6">
                           <div className="text-white/40 text-sm mb-2 flex items-center">
                             <Clock className="h-3 w-3 mr-1" />
-                            {post.createdAt}
+                            投稿日：
+                            {format(parseISO(post.createdAt), "yyyy年M月d日")}
                           </div>
                           <h3 className="text-xl font-bold text-white mb-2">
                             {post.title}

@@ -16,9 +16,9 @@ export const scrollDisplay = (timeSlotRef: RefObject<HTMLElement | null>) => {
 };
 
 export const myCalendars = [
-  { name: "松本山雅FC(Top)", color: "bg-green-500" },
-  { name: "松本山雅FC U-18", color: "bg-blue-500" },
-  { name: "松本山雅FC U-15", color: "bg-purple-500" },
+  { name: "Top", color: "bg-green-500" },
+  { name: "U-18", color: "bg-blue-500" },
+  { name: "U-15", color: "bg-purple-500" },
 ];
 
 export const weekDays = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
