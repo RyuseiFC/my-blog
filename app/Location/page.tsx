@@ -54,21 +54,9 @@ export default function VenuesPage() {
   const [searchQuery] = useState("");
   const [selectedStadium, setSelectedStadium] = useState<Stadium | null>(null);
   const [mapInitialized, setMapInitialized] = useState(false);
-  const mapRef = useRef(null);
-  const markersRef = useRef([]);
+  const mapRef = useRef<L.Map>(null);
+  const markersRef = useRef<L.Marker[]>([]);
   const mapContainerRef = useRef<HTMLDivElement>(null);
-
-  // 地域選択のオプション
-  // const leagueOptions = [
-  //   { id: "all", name: "すべてのリーグ" },
-  //   { id: "j1", name: "Jリーグ（J1）" },
-  //   { id: "j2", name: "Jリーグ（J2）" },
-  //   { id: "j3", name: "Jリーグ（J3）" },
-  //   { id: "acl", name: "ACLリーグ" },
-  //   { id: "emperor", name: "天皇杯" },
-  //   { id: "levain", name: "ルヴァンカップ" },
-  //   { id: "wc", name: "ワールドカップ会場" },
-  // ];
 
   const leagueOptions = [
     { id: "all", name: "すべてのリーグ" },
@@ -638,19 +626,16 @@ export default function VenuesPage() {
         return matchesLeague && matchesSearch;
       });
 
-      markersRef.current = filteredStadiums.map((stadium) => {
-        const marker = L.marker([stadium.location.lat, stadium.location.lng])
-          .addTo(mapRef.current)
-          .bindPopup(
-            `<b>${stadium.name}</b><br>${stadium.address}<br><a href="#" class="stadium-link" data-id="${stadium.id}">詳細を見る</a>`
-          );
-
-        marker.on("click", () => {
-          setSelectedStadium(stadium);
+      if (mapRef.current) {
+        markersRef.current = filteredStadiums.map((stadium) => {
+          const marker = L.marker([stadium.location.lat, stadium.location.lng])
+            .addTo(mapRef.current!) // ここで ! を使って明示的に non-null として扱う
+            .bindPopup(
+              `<b>${stadium.name}</b><br>${stadium.address}<br><a href="#" class="stadium-link" data-id="${stadium.id}">詳細を見る</a>`
+            );
+          return marker;
         });
-
-        return marker;
-      });
+      }
 
       // 表示範囲を調整
       if (filteredStadiums.length > 0) {
@@ -665,15 +650,13 @@ export default function VenuesPage() {
         } else if (filteredStadiums.length > 1) {
           // スタジアムが複数ある場合は、すべてのスタジアムが表示されるようにバウンドを設定
           try {
-            const latLngs = filteredStadiums.map((stadium) => [
-              stadium.location.lat,
-              stadium.location.lng,
-            ]);
-            const bounds = L.latLngBounds(latLngs);
+            const latLngs: [number, number][] = filteredStadiums.map(
+              (stadium) => [stadium.location.lat, stadium.location.lng]
+            );
 
-            // バウンドが有効かチェック
+            const bounds = L.latLngBounds(latLngs);
             if (bounds.isValid()) {
-              mapRef.current.fitBounds(bounds, { padding: [50, 50] });
+              mapRef.current!.fitBounds(bounds, { padding: [50, 50] });
             } else {
               // バウンドが無効な場合はデフォルトビューに戻す
               mapRef.current.setView([36.2048, 138.2529], 5);
