@@ -576,7 +576,7 @@ export default function VenuesPage() {
           });
 
           // ポップアップ内のリンクをクリックしたときの処理
-          map.on("popupopen", (e) => {
+          map.on("popupopen", () => {
             const links = document.querySelectorAll(".stadium-link");
             links.forEach((link) => {
               link.addEventListener("click", (event) => {
